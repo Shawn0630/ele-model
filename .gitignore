@@ -16,5 +16,4 @@ buildNumber.properties
 
 # IDE GENERAL
 .idea/
-.target/
-.out/
+
