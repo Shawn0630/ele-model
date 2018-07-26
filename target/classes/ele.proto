@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package com.ele.model.dto.ele;
+
+option java_multiple_files = true;
+
+enum PromotionType {
+    NEW = 0;
+    SUBTRACTION = 1;
+    SPECIAL = 2;
+    DISCOUNT = 3;
+}
+
+message Promotion {
+    PromotionType variety = 1;
+    string slogan = 2;
+}
+
+message Shop {
+    string imgUrl = 1;
+    bool isBrand = 2;
+    string shopName = 3;
+    uint32 starNum = 4;
+    uint32 monthlySales = 5;
+    uint32 initMoney = 6;
+    uint32 deliveryFee = 7;
+    uint32 distance = 8;
+    string needTime = 9;
+    bool isBird = 10;
+    bool isOntime = 11;
+    bool isInsurance = 12;
+    bool needtip = 13;
+    bool isNewShop = 14;
+    repeated Promotion shopActivity= 15;
+}
