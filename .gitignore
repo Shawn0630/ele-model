@@ -11,10 +11,10 @@ buildNumber.properties
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 
-#MAC OS GENERAL
+# MAC OS GENERAL
 *.DS_Store
 
-#IDE GENERAL
+# IDE GENERAL
 .idea/
 .target/
 .out/
