@@ -16,15 +16,15 @@ message Promotion {
     string slogan = 2;
 }
 
-message Shop {
+message ShopProfile {
     string imgUrl = 1;
     bool isBrand = 2;
     string shopName = 3;
-    uint32 starNum = 4;
+    double starNum = 4;
     uint32 monthlySales = 5;
-    uint32 initMoney = 6;
-    uint32 deliveryFee = 7;
-    uint32 distance = 8;
+    double initMoney = 6;
+    double deliveryFee = 7;
+    double distance = 8;
     string needTime = 9;
     bool isBird = 10;
     bool isOntime = 11;
