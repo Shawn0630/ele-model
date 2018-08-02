@@ -68,3 +68,30 @@ message ShopDetail {
     repeated Promotion shopActivity = 12;
     repeated Variety varietyList = 13;
 }
+
+message EvaluationStamp {
+    string name = 1;
+    uint32 num = 2;
+}
+
+message EvaluationComment {
+    string profileImg = 1;
+    string name = 2;
+    string time = 3;
+    repeated string foods = 4;
+    string content = 5;
+    string costTime = 6;
+    double star = 7;
+}
+
+
+message ShopEvaluation {
+    double score = 1;
+    double ratio = 2;
+    double service = 3;
+    double dish = 4;
+    double time = 5;
+    repeated EvaluationStamp stamps = 6;
+    repeated EvaluationComment comments = 7;
+
+}
