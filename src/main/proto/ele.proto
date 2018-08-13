@@ -36,21 +36,22 @@ message Variety {
 
 
 message ShopProfile {
-    string imgUrl = 1;
-    bool isBrand = 2;
-    string shopName = 3;
-    double starNum = 4;
-    uint32 monthlySales = 5;
-    double initMoney = 6;
-    double deliveryFee = 7;
-    double distance = 8;
-    string needTime = 9;
-    bool isBird = 10;
-    bool isOntime = 11;
-    bool isInsurance = 12;
-    bool needtip = 13;
-    bool isNewShop = 14;
-    repeated Promotion shopActivity = 15;
+    string id = 1;
+    string imgUrl = 2;
+    bool isBrand = 3;
+    string shopName = 4;
+    double starNum = 5;
+    uint32 monthlySales = 6;
+    double initMoney = 7;
+    double deliveryFee = 8;
+    double distance = 9;
+    string needTime = 10;
+    bool isBird = 11;
+    bool isOntime = 12;
+    bool isInsurance = 13;
+    bool needtip = 14;
+    bool isNewShop = 15;
+    repeated Promotion shopActivity = 16;
 }
 
 message ShopDetail {
