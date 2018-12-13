@@ -112,3 +112,53 @@ message FileNode {
         DIR = 1;
     }
 }
+
+enum IonType {
+    A = 0;
+    B = 1;
+    C = 2;
+    X = 3;
+    Y = 4;
+    Z = 5;
+    Z_PRIME = 6;
+    IMMONIUM = 7;
+    PRECURSOR = 8;
+
+    A_MINUS_H2O = 16;
+    B_MINUS_H2O = 17;
+    C_MINUS_H2O = 18;
+    X_MINUS_H2O = 19;
+    Y_MINUS_H2O = 20;
+    Z_MINUS_H2O = 21;
+    Z_PRIME_MINUS_H2O = 22;
+
+    A_MINUS_NH3 = 32;
+    B_MINUS_NH3 = 33;
+    C_MINUS_NH3 = 34;
+    X_MINUS_NH3 = 35;
+    Y_MINUS_NH3 = 36;
+    Z_MINUS_NH3 = 37;
+    Z_PRIME_MINUS_NH3 = 38;
+
+    A_CHARGE2 = 48;
+    B_CHARGE2 = 49;
+    C_CHARGE2 = 50;
+    X_CHARGE2 = 51;
+    Y_CHARGE2 = 52;
+    Z_CHARGE2 = 53;
+    Z_PRIME_CHARGE2 = 54;
+
+    C_MINUS_H = 66;
+}
+
+message TheoreticalIons {
+    IonType type = 1;
+    repeated float mz = 2;
+}
+
+message Ion {
+    IonType type = 1;
+    float mz = 2;
+    float h = 3;
+    uint32 pos = 4;
+}
