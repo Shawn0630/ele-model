@@ -162,3 +162,135 @@ message Ion {
     float h = 3;
     uint32 pos = 4;
 }
+message Ms1Stats {
+    uint64 retentionTime = 1; // milliseconds
+    float tic = 2;
+    uint32 scan = 3; //ms1 scan number
+    float basePeakIntensity = 4;
+}
+
+message Ms2Stats {
+    uint64 retentionTime = 1; // milliseconds
+    float tic = 2;
+    uint32 scan = 3;
+    uint32 ms1Scan = 4;
+    float precursorMz = 5;
+    uint32 precursorCharge = 6;
+    float basePeakIntensity = 7;
+}
+message Spectrum {
+    repeated float mz = 1;
+    repeated float intensity = 2;
+    oneof stat {
+        Ms1Stats ms1Stats = 4;
+        Ms2Stats ms2Stats = 5;
+    }
+}
+message ObservedIons {
+    repeated Ion ions = 2;
+    Spectrum spectrum = 3;
+    float mz = 4;
+    uint32 z = 5;
+    uint64 retentionTime = 6; // milliseconds
+}
+message FractionObservedIons {
+    map<uint32, ObservedIons> scanumObservedIons = 2; // Scannum is key
+}
+message PsmIonMatch {
+    string sequence = 1;
+    map<string, FractionObservedIons> fractionObservedIons = 2; // Fraction is key
+    repeated TheoreticalIons theoreticalIons = 3;
+    ActivationMethod activationMethod = 4;
+}
+
+message ProteinPeptide {
+    Protein protein = 1;
+    repeated SupportPeptide peptides = 2;
+    string proteinSequence = 3;
+}
+
+message Protein {
+    string id = 1;
+    string accession = 2;
+    string description = 3;
+    float pValue = 4;
+    uint32 cluster = 5;
+    float coverage = 6;
+    float mass = 7;
+    repeated AbbreviatedModification modifications = 8;
+    repeated ProteinSample samples = 9;
+    uint32 peptides = 12; // Count of peptides (ignoring modification)
+    uint32 unique = 13;   // Count of peptides (ignoring modification)
+    bool top = 14;
+}
+
+message ProteinSample {
+    float sampleCoverage = 2;
+    float sampleArea = 3;
+    uint32 sampleSpec = 4;
+}
+
+message AbbreviatedModification {
+    string name = 1;
+    string abbreviation = 2;
+    float monoMass = 3;
+    ModificationType type = 4;
+    string anywhereResidues = 5;
+}
+
+// Support peptide is a peptide but with start and end positions. It only has meaning in relation to a Protein.
+message SupportPeptide {
+    Peptide peptide = 1;
+    uint32 start = 2;
+    uint32 end = 3;
+    bool unique = 4;
+}
+
+message Peptide {
+    string sequence = 1;
+    float mass = 2;
+    uint32 length = 3;
+    repeated AbbreviatedModification modifications = 5;
+    repeated PeptideSample samples = 6;
+    repeated uint32 positionOfModifications = 8;
+    uint32 psmCount = 9;
+    repeated bytes targetProteinIds = 10;
+    repeated bytes decoyProteinIds = 11;
+    repeated uint32 allPsmScanNums = 12;
+}
+
+message PeptideSample {
+    uint32 psmCount = 2;
+    float area = 3;
+    float maxIntensity = 4;
+    map<string, PeptideSampleFraction> fractions = 32;
+}
+
+message PeptideSampleFraction {
+    repeated PSM psms = 2;
+}
+
+message PSM {
+    uint32 scannum = 1;
+    float mz = 2;
+    uint32 z = 3;
+    uint64 retentionTime = 4; // milliseconds
+    float area = 5;
+    float pValue = 6; // -10lgP
+    float ppm = 7;
+    Engine engine = 8;
+    uint32 featureId = 9;
+    repeated float aScore = 10;
+    repeated string accession = 11;
+    string psmId = 12;
+    float maxIntensity = 13;
+    float score = 14;
+    bool decoy = 15;
+}
+
+enum Engine {
+    UNKNOWN = 0;
+    PEAKS = 1;
+    SPIDER = 2;
+    PEAKSPTM = 3;
+}
