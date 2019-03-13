@@ -2,11 +2,8 @@ package com.ele.model.mysql;
 
 import com.ele.model.DataModel;
 import com.ele.model.EleImmutable;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.immutables.value.Value;
 
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 @SuppressWarnings("javadoc")
