@@ -69,7 +69,7 @@ message ScanDenovoCandidate {
     float mz = 2;
     uint32 z = 3;
     uint64 retentionTime = 4; // milliseconds
-    repeated DenovoCandidate denovoCandidate = 5;
+    repeated DenovoCandidate denovoCandidates = 5;
     ActivationMethod activationMethod = 7;
 }
 
@@ -80,7 +80,7 @@ message DenovoCandidate {
     float area = 4;
     float ppm = 5;
     float alc = 6; // Average positional confidence.
-    repeated float positionConfidence = 7;
+    repeated float positionalConfidence = 7;
     repeated AbbreviatedModification modifications = 8;
     float maxIntensity = 9;
 }
